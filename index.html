@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccuKnox | DVWA Kubernetes Security Lab</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.7;
+        }
+
+        header {
+            padding: 22px 8%;
+            border-bottom: 1px solid #263247;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        header h2 {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+
+        .hero {
+            padding: 80px 8%;
+            text-align: center;
+            background: linear-gradient(135deg, #111827, #172554);
+        }
+
+        .badge {
+            display: inline-block;
+            color: #7dd3fc;
+            border: 1px solid #0284c7;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 52px);
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            color: #cbd5e1;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0284c7;
+            color: white;
+            padding: 12px 22px;
+            margin: 6px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 50px 8%;
+        }
+
+        section h2 {
+            color: #7dd3fc;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #151f32;
+            border: 1px solid #29384f;
+            padding: 22px;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            color: #bae6fd;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+        }
+
+        .notice {
+            background: #1e293b;
+            border-left: 4px solid #f59e0b;
+            padding: 18px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #263247;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Security Lab</h2>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#technology">Technologies</a>
+        <a href="#testing">Security Testing</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span class="badge">Kubernetes Security Project</span>
+
+    <h1>DVWA Deployment on Kubernetes</h1>
+
+    <p>
+        A hands-on project demonstrating the deployment of Damn Vulnerable
+        Web Application (DVWA) in a local Kubernetes environment using
+        Minikube, Docker, and Kubernetes resources.
+    </p>
+
+    <a class="button"
+       href="https://github.com/Shaik-Fayaz786/AccuKnox-DVWA-Kubernetes"
+       target="_blank" rel="noopener noreferrer">
+       View Source Code
+    </a>
+</section>
+
+<section id="about">
+    <h2>Project Overview</h2>
+    <p>
+        This project deploys a deliberately vulnerable web application
+        alongside a MariaDB database in Kubernetes. It demonstrates
+        application deployment, service configuration, and controlled
+        web security testing.
+    </p>
+</section>
+
+<section id="technology">
+    <h2>Technologies Used</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Kubernetes</h3>
+            <p>Pods, deployments, services, and container orchestration.</p>
+        </div>
+
+        <div class="card">
+            <h3>Minikube</h3>
+            <p>Local Kubernetes cluster for development and testing.</p>
+        </div>
+
+        <div class="card">
+            <h3>Docker</h3>
+            <p>Container-based application deployment.</p>
+        </div>
+
+        <div class="card">
+            <h3>DVWA and MariaDB</h3>
+            <p>Web application security testing and database services.</p>
+        </div>
+    </div>
+</section>
+
+<section id="testing">
+    <h2>Security Testing Demonstrations</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>01. SQL Injection</h3>
+            <p>
+                Tested an SQL injection input and observed the resulting
+                database query behavior in the controlled DVWA lab.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>02. Reflected XSS</h3>
+            <p>
+                Tested a JavaScript payload to demonstrate how untrusted
+                input can execute in a browser.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>03. Command Injection</h3>
+            <p>
+                Investigated command injection in DVWA. Refer to the
+                repository documentation for the recorded test results.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Security Notice</h2>
+
+    <div class="notice">
+        DVWA is intentionally vulnerable and must be used only in an
+        isolated, authorized testing environment. This GitHub Pages
+        website showcases the project; it does not run the DVWA
+        application itself.
+    </div>
+</section>
+
+<section>
+    <h2>Source Code</h2>
+    <p>
+        Explore the Kubernetes configuration and project documentation
+        in the GitHub repository.
+    </p>
+
+    <br>
+
+    <a class="button"
+       href="https://github.com/Shaik-Fayaz786/AccuKnox-DVWA-Kubernetes"
+       target="_blank" rel="noopener noreferrer">
+       Open GitHub Repository
+    </a>
+</section>
+
+<footer>
+    <p>AccuKnox DVWA Kubernetes Security Lab | Project Showcase</p>
+</footer>
+
+</body>
+</html>
