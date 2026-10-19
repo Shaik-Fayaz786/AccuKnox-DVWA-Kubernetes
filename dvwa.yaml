@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa-db
+  namespace: dvwa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa-db
+  template:
+    metadata:
+      labels:
+        app: dvwa-db
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:10
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MARIADB_ROOT_PASSWORD
+              value: "dvwa"
+            - name: MARIADB_DATABASE
+              value: "dvwa"
+            - name: MARIADB_USER
+              value: "dvwa"
+            - name: MARIADB_PASSWORD
+              value: "p@ssw0rd"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: dvwa
+spec:
+  selector:
+    app: dvwa-db
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa
+  namespace: dvwa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa
+  template:
+    metadata:
+      labels:
+        app: dvwa
+    spec:
+      containers:
+        - name: dvwa
+          image: ghcr.io/digininja/dvwa:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: DB_SERVER
+              value: "db"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa
+  namespace: dvwa
+spec:
+  type: ClusterIP
+  selector:
+    app: dvwa
+  ports:
+    - port: 80
+      targetPort: 80
